@@ -2,6 +2,7 @@
 //! directory.
 
 pub mod blockstates;
+pub mod texture;
 pub mod models;
 
 pub use blockstates::BlockStates;
