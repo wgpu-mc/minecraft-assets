@@ -9,8 +9,13 @@ use serde::{Deserialize, Serialize};
 
 ///Extra information about how a frame should render in a texture animation.
 #[derive(Deserialize, Serialize, Debug, Default, Clone, PartialEq)]
-pub struct Frame {
-    
+#[serde(untagged)]
+pub enum Frame {
+    Index(u32),
+    Override {
+        index: u32,
+        time: u32
+    }
 }
 
 fn one() -> i32 {
@@ -24,9 +29,9 @@ pub struct TextureAnimation {
     #[serde(default)]
     pub interpolate: bool,
     ///Not used in vanilla's asset files
-    pub width: Option<i32>,
+    pub width: Option<u32>,
     ///Not used in vanilla's asset files
-    pub height: Option<i32>,
+    pub height: Option<u32>,
     ///How quickly, in ticks, the animation should progress. Defaults to one.
     #[serde(default = "one")]
     pub frametime: i32,
