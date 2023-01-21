@@ -7,13 +7,17 @@
 
 use serde::{Deserialize, Serialize};
 
-///Extra information about how a frame should render in a texture animation.
-#[derive(Deserialize, Serialize, Debug, Default, Clone, PartialEq)]
+///Describes the order of a single frame in a texture animation
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(untagged)]
 pub enum Frame {
+    ///Normal frame order
     Index(u32),
+    ///Describes if a frame should display differently than in the default order. Unused in vanilla
     Override {
+        ///Index of the frame in the texture
         index: u32,
+        ///How long this specific frame should last for
         time: u32
     }
 }
