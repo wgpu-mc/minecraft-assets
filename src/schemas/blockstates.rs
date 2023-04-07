@@ -331,6 +331,7 @@ pub mod multipart {
     /// "when": {"north": "side|up", "east": "side|up" }
     /// ```
     #[derive(Deserialize, Serialize, Debug, Default, Clone, PartialEq)]
+    #[serde(rename_all = "lowercase")]
     pub struct Condition {
         /// Map from state name to state value that forms the list of conditions.
         #[serde(flatten)]
