@@ -18,8 +18,8 @@ pub enum Frame {
         ///Index of the frame in the texture
         index: u32,
         ///How long this specific frame should last for
-        time: u32
-    }
+        time: u32,
+    },
 }
 
 fn one() -> i32 {
@@ -40,13 +40,12 @@ pub struct TextureAnimation {
     #[serde(default = "one")]
     pub frametime: i32,
     ///Extra information about each frame
-    pub frames: Option<Vec<Frame>>
+    pub frames: Option<Vec<Frame>>,
 }
 
 ///The struct representing an entire texture .mcmeta
 #[derive(Deserialize, Serialize, Debug, Default, Clone, PartialEq)]
 pub struct Texture {
     ///Optional, describes the animation a texture will have in-game
-    pub animation: Option<TextureAnimation>
-
+    pub animation: Option<TextureAnimation>,
 }

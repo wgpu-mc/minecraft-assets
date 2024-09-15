@@ -87,9 +87,7 @@ impl BlockStates {
 
             Self::Variants { variants } => {
                 if variants.len() == 1 {
-                    let variant = variants
-                        .into_iter()
-                        .map(|(_, variant)| variant)
+                    let variant = variants.into_values()
                         .next()
                         .unwrap();
 
@@ -410,7 +408,7 @@ pub mod multipart {
     /// "when": {"north": "side|up", "east": false }
     ///                   ^^^^^^^^^          ^^^^^
     /// ```
-    #[derive(Deserialize, Serialize, Debug, Clone)]
+    #[derive(Deserialize, Serialize, Debug, Clone, Hash)]
     #[serde(untagged)]
     pub enum StateValue {
         /// Unquoted bool value.
